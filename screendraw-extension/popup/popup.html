@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="popup.css" />
+  <title>ScreenDraw Controls</title>
 </head>
 <body>
+  <label>Color: <input type="color" id="colorPicker" value="#000000" /></label><br />
+  <label>Brush Size: <input type="range" id="brushSize" min="1" max="20" value="5" /></label><br />
+  <button id="eraserBtn">Eraser</button>
+  <button id="undoBtn">Undo</button>
+  <button id="redoBtn">Redo</button>
+  <button id="saveBtn">Save</button>
   <script src="popup.js"></script>
 </body>
 </html>
