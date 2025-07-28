@@ -1,3 +1,143 @@
-#screen-draw-canvas {
-  cursor: crosshair;
+/* content/styles.css - Styles for ScreenDraw Canvas and Floating Toolbar */
+
+/* --- Base styles for the drawing canvas (optional, mostly handled by JS) --- */
+#screendraw-canvas {
+  /* No specific CSS needed here, as its appearance is mostly controlled by JS and canvas API */
+  /* pointer-events and cursor are controlled by JavaScript for dynamic interaction */
+}
+
+/* --- Styles for the floating toolbar --- */
+.screendraw-toolbar-base {
+  /* Positioning and basic layout handled by JS, but can be overridden/extended here */
+  background: rgba(33, 37, 41, 0.95); /* Darker, slightly transparent background */
+  color: #e9ecef; /* Light text color */
+  padding: 15px;
+  border-radius: 12px; /* More pronounced rounded corners */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Stronger, softer shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle light border */
+  font-family: 'Inter', sans-serif; /* Consistent font with popup */
+  user-select: none; /* Prevent text selection on toolbar */
+  backdrop-filter: blur(5px); /* Optional: Frosted glass effect */
+  -webkit-backdrop-filter: blur(5px); /* For Safari */
+}
+
+/* Control groups for better organization and spacing */
+.screendraw-control-group {
+  margin-bottom: 10px; /* More space between groups */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align labels to the left */
+  width: 100%; /* Ensure groups take full width */
+}
+
+.screendraw-control-group label {
+  color: #adb5bd; /* Slightly muted label color */
+  font-size: 0.8em; /* Smaller, subtle labels */
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+}
+
+/* Input fields */
+.screendraw-control-group input[type="color"] {
+  width: 100%;
+  height: 38px; /* Taller for easier picking */
+  border: 1px solid #495057; /* Darker border for inputs */
+  background: #343a40; /* Dark input background */
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+/* Range slider (Brush Size) */
+.screendraw-control-group input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+  appearance: none;
+  height: 12px; /* Thicker slider track */
+  background: #495057; /* Darker track color */
+  border-radius: 6px;
+  outline: none;
+  opacity: 0.9;
+  transition: opacity .2s;
+  margin-top: 5px;
+}
+
+.screendraw-control-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px; /* Larger, more prominent thumb */
+  height: 22px;
+  border-radius: 50%;
+  background: #28a745; /* Green thumb */
+  cursor: pointer;
+  border: 3px solid #fff; /* White border for visibility */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  margin-top: -5px; /* Adjust thumb position vertically */
+}
+
+/* Button Groups */
+.screendraw-button-group {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap if space is limited */
+  gap: 8px; /* Consistent spacing between buttons in a group */
+  width: 100%;
+}
+
+/* All Buttons */
+#screendraw-toolbar button {
+  background-color: #495057; /* Default button background */
+  color: #e9ecef;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px; /* Softly rounded buttons */
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+  flex-grow: 1; /* Allow buttons to grow and fill available space */
+  min-width: 50px; /* Minimum width for smaller buttons */
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+#screendraw-toolbar button:hover {
+  background-color: #6c757d; /* Lighter on hover */
+  transform: translateY(-2px); /* More noticeable lift effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#screendraw-toolbar button:active {
+  transform: translateY(0); /* Press effect */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Inner shadow on press */
+}
+
+/* Active Tool Button Highlight */
+#screendraw-toolbar button.active {
+  background-color: #28a745; /* Distinct active color (green) */
+  color: #fff;
+  font-weight: bold;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6); /* Inner white glow for active */
+}
+
+/* Action Buttons (Save, Hide) */
+.screendraw-action-button {
+  background-color: #007bff; /* Blue for primary actions */
+  padding: 12px 15px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.screendraw-action-button:hover {
+  background-color: #0056b3;
+}
+
+/* Separators */
+.screendraw-separator {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Very subtle separator */
+  margin: 10px 0;
+  width: 100%;
 }
